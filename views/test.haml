@@ -1,0 +1,22 @@
+-#%script(type="text/javascript" src="/javascript/zip.js")
+-#%script(type="text/javascript" src="/javascript/inflate.js")
+-#%script(type="text/javascript" src="/javascript/deflate.js")
+-#%script(type="text/javascript" src="/javascript/yaml_dumper.js")
+-#%script(type="text/javascript" src="/javascript/rayaml-parser.js")
+%script(type="text/javascript" src="/javascript/test.js")
+-#%script(type="text/javascript" src="/javascript/jQuery.min.js")
+%script(type="text/javascript" src="/javascript/jquery-1.7.1.min.js")
+-#%script(type="text/javascript" src="/javascript/jquery-ui-1.8.17.custom.min.js")
+-#%link(rel="stylesheet" href="/css/jquery-ui-1.8.17.custom.css")
+-#%link(rel="stylesheet" href="/css/dialog.css")
+-#output(style="min-height: 100px; white-space: pre; border: 1px solid black;" ondragenter="document.getElementById('output').textContent = ''; event.stopPropagation(); event.preventDefault();" ondragover="event.stopPropagation(); event.preventDefault();" ondrop="event.stopPropagation(); event.preventDefault(); dodrop(event);")
+
+-#%input(type="file" accept="application/oramap" id="file-input")
+-#%select(id="creation-method-input")
+  %option(value="Blob") Blob
+  %option(value="File") File 
+-#%ul(id="file-list")
+-#%a(id="download_text") Download Text
+-#%a(id="download_binary") Download Binary
+%canvas(id="test_canvas" width="300" height="300")
+

@@ -1,0 +1,100 @@
+%script(type="text/javascript" src="/javascript/zip.js")
+%script(type="text/javascript" src="/javascript/inflate.js")
+%script(type="text/javascript" src="/javascript/deflate.js")
+%script(type="text/javascript" src="/javascript/main.js")
+%script(type="text/javascript" src="/javascript/kinetic.js")
+%script(type="text/javascript" src="/javascript/mapio.js")
+%script(type="text/javascript" src="/javascript/mapview.js")
+%script(type="text/javascript" src="/javascript/tileset.js")
+%script(type="text/javascript" src="/javascript/rayaml-parser.js")
+%script(type="text/javascript" src="/javascript/yaml_dumper.js")
+%script(type="text/javascript" src="/javascript/jquery.validate.js")
+%link(rel="stylesheet" href="/css/styles.css")
+%link(rel="stylesheet" href="/css/template_picker.css")
+%link(rel="stylesheet" href="/css/jquery-ui-1.8.17.custom.css")
+%link(rel="stylesheet" href="/css/dialog.css")
+
+#menu
+  #general_menu(style="width: 500px; float: left;")
+    %button(onclick="RAMAP.onClickNew();") New
+    %span(id="map_options")
+      %button(id="map_prop_butt" onclick="$('#map_prop_dialog').dialog('open')") Properties
+      %button(onclick="RAMAP.saveMap();") Save
+    %span(id="download_bin" class="download")
+    %span(id="instructions")
+      Drop a .oramap file into the window or click new.
+
+  #map_menu
+    -#%button(onclick="RAMAP.setTileset('snow');") Snow
+    -#%button(onclick="RAMAP.setTileset('temperat');") Temperate
+    %button(id="debug" onclick="RAMAP.mapView.onDebug();") 
+    %button(id="show_rsrc" onclick="RAMAP.toggleRsrc();")
+    %button(id="show_actor" onclick="RAMAP.toggleActor();")
+    %button(id="drag_pan" onclick="RAMAP.toolPalette.setTool(1, 'hand', 1);") 
+    %button(id="zoom_in" onclick="RAMAP.mapView.zoomIn();")
+    %button(id="zoom_out" onclick="RAMAP.mapView.zoomOut();")
+    %span
+      %label X:
+      %span(id="map_x") 0
+      %label Y:
+      %span(id="map_y") 0
+#app
+  %span
+    #picker_window 
+      #picker_menu
+        %button(onclick="RAMAP.showTemplates();") Templates
+        %button(onclick="RAMAP.showResources();") Resources
+        %button(onclick="RAMAP.showActors();") Actors
+      #scroll_pane
+        #template_picker
+          #height_1(class="height")
+          #height_2(class="height")
+          #height_3(class="height")
+          #height_4(class="height")
+          #height_5(class="height")
+  %span(id="map_window")
+
+-# Map Properities Dialog
+%form(id="map_prop_dialog" name="map_prop_dialog" action="javascript:RAMAP.saveProperties();")
+  %fieldset
+    .text_input
+      %label(for="title") Map Title
+      %input(id="title" name="title" class="required" value="No Title") 
+      %label(for="author") Author
+      %input(id="author" name="author" value="Edgar Allen Poe") 
+    .text_input
+      %label Description
+      %textarea(id="description")
+    %label Tileset
+    .radio
+      .input
+        %input(type="radio" id="radio_snow" name="radio" checked="true")
+        %label(for="radio_snow") Snow 
+        %input(type="radio" id="radio_temperat" name="radio" style="margin-left: 100px;")
+        %label(for="radio_temperat") Temperate
+    %label Map Size
+    #mapsize
+      .num_input
+        %label(for="mapsize_x") X
+        %input(id="mapsize_x" name="mapsize_x" class="required digits" maxlength="3" value="128")
+        %label(for="mapsize_y") Y
+        %input(id="mapsize_y" name="mapsize_y" class="required digits" maxlength="3" value="128")
+    %label Map Bounds
+    #bounds_input
+      .num_input
+        %label(for="bound_W") W
+        %input(id="bound_W" name="bound_W" class="reguired digits" maxlength="3" value="16")
+        %label(for="bound_N") N
+        %input(id="bound_N" name="bound_N" class="required digits" maxlength="3" value="16")
+        %label(for="bound_E") E
+        %input(id="bound_E" name="bound_E" class="required digits" maxlength="3" value="112")
+        %label(for="bound_S") S
+        %input(id="bound_S" name="bound_S" class="required digits" maxlength="3" value="112")
+    .input
+      %input(type="checkbox" id="selectable" checked="true")
+      %label(for="selectable") Selectable
+    .input
+      %input(type="checkbox" id="shellmap")
+      %label(for="shellmap") Shell Map
+    .input
+      %input(type="submit" id="submit_prop_dialog" value="UPDATE") 

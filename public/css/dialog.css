@@ -1,0 +1,20 @@
+.error{
+  color: red;
+  font-size: .75em;
+  display: block;
+}
+.input{
+  margin-top: 5px;
+}
+
+.num_input input{
+  width: 35px;
+}
+
+.text_input label{
+  display: block;
+}
+
+.text_input textarea{
+  resize: vertical;
+}

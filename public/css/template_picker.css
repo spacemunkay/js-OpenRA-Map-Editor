@@ -1,0 +1,54 @@
+/**
+#scroll_pane:hover canvas{
+  -webkit-transition: all 3s ease-in;
+  -webkit-transform: translate(0px,-2300px); 
+}*/
+#template_picker{
+  background: #444;
+}
+
+.actor{
+  display: none;
+}
+
+.temperat{
+  display: none;
+}
+
+.resource{
+  display: none;
+}
+
+.height input{
+  margin: 2px;
+  border: 1px solid #555;
+  /**background: #66FF66;*/ /**to show missing pixels */
+  background: #000; /** to hide missing pixels */
+}
+
+.height{
+  margin: 0px 0px 5px 0px;
+  background: #999;
+}
+
+#picker_window {
+  width:300px;
+  height:700px;
+  float: left;
+  background: #444;
+}
+
+#picker_menu {
+  font-size: .9em;
+  /**width: 500px;*/
+  height: 25px;
+  padding-top: 2px;
+}
+
+#scroll_pane {
+  height: 675px;
+  overflow-y:scroll;
+  /**border: 1px solid #000;*/
+}
+
+
